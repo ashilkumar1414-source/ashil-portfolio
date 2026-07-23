@@ -29,20 +29,31 @@ npm run build
 
 Output: `dist/ashil-portfolio/`
 
-## Customize
+## Deploy (Vercel)
 
-Update personal links and content in:
+### One-time setup
 
-- `src/app/data/portfolio.data.ts` — profile, skills, experience, projects, socials
-- `public/Ashil_Kumar_Resume.pdf` — add your resume PDF (see `public/RESUME_README.txt`)
+```bash
+# 1. Log in to GitHub CLI
+gh auth login
 
-## Features
+# 2. Create repo + push
+gh repo create ashil-portfolio --public --source=. --remote=origin --push
 
-- Sticky navbar with scroll blur + active section indicator
-- Dark / light theme (persisted in `localStorage`)
-- Hero with Angular-focused visual
-- Skills, experience timeline, filtered projects
-- “Why Angular?” architecture visualization
-- Process, value props, validated contact form
-- Scroll-reveal animations with `prefers-reduced-motion` support
-- SEO metadata + custom favicon
+# 3. Log in to Vercel + deploy
+npx vercel login
+npx vercel --prod
+```
+
+### Later deploys
+
+```bash
+npm run deploy
+```
+
+Vercel settings (also in `vercel.json`):
+
+- **Build command:** `npm run build`
+- **Output directory:** `dist/ashil-portfolio/browser`
+
+Or connect the GitHub repo in the [Vercel dashboard](https://vercel.com/new) for automatic deploys on push.
