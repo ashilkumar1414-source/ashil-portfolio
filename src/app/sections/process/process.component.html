@@ -1,0 +1,24 @@
+<section id="process" class="section section-alt process">
+  <div class="container">
+    <app-section-header
+      appReveal
+      align="center"
+      eyebrow="Process"
+      title="How I build"
+      subtitle="A deliberate path from understanding the problem to shipping a polished product."
+    />
+
+    <ol class="process__track">
+      @for (step of steps; track step.number; let i = $index) {
+        <li class="process__step" appReveal>
+          <span class="process__number">{{ step.number }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+          @if (i < steps.length - 1) {
+            <span class="process__connector" aria-hidden="true"></span>
+          }
+        </li>
+      }
+    </ol>
+  </div>
+</section>

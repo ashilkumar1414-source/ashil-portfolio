@@ -1,0 +1,20 @@
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100%;
+  z-index: calc(var(--z-nav) + 10);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+
+  &:focus {
+    top: var(--space-4);
+  }
+}
+
+main {
+  display: block;
+}

@@ -1,0 +1,67 @@
+<section id="contact" class="section section-alt contact">
+  <div class="container contact__grid">
+    <div class="contact__intro" appReveal>
+      <app-section-header
+        eyebrow="Contact"
+        title="Let's Build Something Great Together"
+        subtitle="Have a project, product, or idea in mind? Let's create a modern and scalable digital experience together."
+      />
+
+      <ul class="contact__details">
+        <li>
+          <span>Email</span>
+          <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+        </li>
+        <li>
+          <span>GitHub</span>
+          <a [href]="contact.github" target="_blank" rel="noopener noreferrer">github.com/ashilkumar1414-source</a>
+        </li>
+        <li>
+          <span>LinkedIn</span>
+          <a [href]="contact.linkedin" target="_blank" rel="noopener noreferrer">linkedin.com/in/ashil-kumar-b90643128</a>
+        </li>
+      </ul>
+
+      <app-social-links [links]="socials" size="lg" />
+    </div>
+
+    <form class="contact__form" appReveal [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      @if (submitted()) {
+        <div class="contact__success" role="status">
+          Thanks for reaching out. Your email client should open with the message ready — just hit send.
+        </div>
+      }
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" autocomplete="name" placeholder="Your name" />
+        @if (nameCtrl.touched && nameCtrl.invalid) {
+          <p class="field__error">Please enter your name (at least 2 characters).</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" autocomplete="email" placeholder="you@example.com" />
+        @if (emailCtrl.touched && emailCtrl.invalid) {
+          <p class="field__error">Please enter a valid email address.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          rows="5"
+          placeholder="Tell me about your project or opportunity..."
+        ></textarea>
+        @if (messageCtrl.touched && messageCtrl.invalid) {
+          <p class="field__error">Please enter a message (at least 10 characters).</p>
+        }
+      </div>
+
+      <app-button variant="primary" size="lg" type="submit" [fullWidth]="true">Send Message</app-button>
+    </form>
+  </div>
+</section>

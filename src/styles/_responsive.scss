@@ -1,0 +1,22 @@
+@use 'mixins' as *;
+
+// Shared responsive helpers used across the app
+
+.hide-mobile {
+  @include respond-below(md) {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @include respond-to(md) {
+    display: none !important;
+  }
+}
+
+.stack-mobile {
+  @include respond-below(md) {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+}

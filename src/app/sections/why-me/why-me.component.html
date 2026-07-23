@@ -1,0 +1,50 @@
+<section id="why" class="section why-me">
+  <div class="container">
+    <app-section-header
+      appReveal
+      align="center"
+      eyebrow="Value"
+      title="Why work with me"
+      subtitle="A product-minded Angular developer focused on quality, clarity, and scalable delivery."
+    />
+
+    <div class="why-me__grid">
+      @for (card of cards; track card.title) {
+        <article class="why-card" appReveal>
+          <div class="why-card__icon" [attr.data-icon]="card.icon" aria-hidden="true">
+            @switch (card.icon) {
+              @case ('architecture') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                  <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                  <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                  <path d="M14 17.5h7M17.5 14v7" />
+                </svg>
+              }
+              @case ('pixel') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2" />
+                  <rect x="8" y="8" width="8" height="8" rx="1" />
+                </svg>
+              }
+              @case ('product') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3z" />
+                  <path d="M12 12 4 7.5M12 12l8-4.5M12 12v9" />
+                </svg>
+              }
+              @case ('ai') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
+                </svg>
+              }
+            }
+          </div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

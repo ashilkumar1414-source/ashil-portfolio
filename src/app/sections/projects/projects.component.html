@@ -1,0 +1,89 @@
+<section id="projects" class="section section-alt projects">
+  <div class="container">
+    <app-section-header
+      appReveal
+      align="center"
+      eyebrow="Projects"
+      title="Selected work"
+      subtitle="Angular-focused product experiences spanning AI, analytics, and SaaS platforms."
+    />
+
+    <div class="projects__filters" appReveal role="tablist" aria-label="Filter projects">
+      @for (filter of filters; track filter) {
+        <button
+          type="button"
+          class="filter-chip"
+          role="tab"
+          [attr.aria-selected]="activeFilter() === filter"
+          [class.is-active]="activeFilter() === filter"
+          (click)="setFilter(filter)"
+        >
+          {{ filter }}
+        </button>
+      }
+    </div>
+
+    <div class="projects__grid">
+      @for (project of filtered(); track project.id) {
+        <article class="project-card" appReveal>
+          <div class="project-card__visual" [attr.data-visual]="project.visual">
+            <div class="project-card__visual-inner">
+              <span class="project-card__visual-label">{{ project.name }}</span>
+              <div class="project-card__shape"></div>
+              <div class="project-card__shape project-card__shape--2"></div>
+            </div>
+          </div>
+
+          <div class="project-card__body">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description }}</p>
+
+            <div class="project-card__meta">
+              <p class="project-card__label">Contribution</p>
+              <p class="project-card__contribution">{{ project.contribution }}</p>
+            </div>
+
+            <ul class="project-card__tech">
+              @for (tech of project.technologies; track tech) {
+                <li>{{ tech }}</li>
+              }
+            </ul>
+
+            <div class="project-card__actions">
+              @if (project.githubUrl) {
+                <app-button
+                  variant="outline"
+                  size="sm"
+                  [href]="project.githubUrl"
+                  [external]="true"
+                  [ariaLabel]="'View ' + project.name + ' on GitHub'"
+                >
+                  GitHub
+                </app-button>
+              } @else {
+                <app-button variant="outline" size="sm" [disabled]="true" ariaLabel="GitHub link coming soon">
+                  GitHub
+                </app-button>
+              }
+              @if (project.liveUrl) {
+                <app-button
+                  variant="primary"
+                  size="sm"
+                  [href]="project.liveUrl"
+                  [external]="true"
+                  [ariaLabel]="'View live demo of ' + project.name"
+                >
+                  Live Demo
+                </app-button>
+              } @else {
+                <app-button variant="primary" size="sm" [disabled]="true" ariaLabel="Live demo coming soon">
+                  Live Demo
+                </app-button>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

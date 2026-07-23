@@ -1,0 +1,75 @@
+<section id="home" class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="eyebrow hero__eyebrow">{{ profile.role }}</p>
+      <h1 id="hero-title" class="hero__title">
+        Angular Developer Building
+        <span class="gradient-text">Scalable & Modern</span>
+        Web Experiences
+      </h1>
+      <p class="lead hero__lead">{{ profile.tagline }}</p>
+
+      <div class="hero__ctas">
+        <app-button variant="primary" size="lg" (clicked)="viewWork()">View My Work</app-button>
+        <app-button variant="secondary" size="lg" [href]="profile.resumePath" [download]="profile.resumeFileName">
+          Download Resume
+        </app-button>
+        <app-button variant="ghost" size="lg" (clicked)="connect()">Let's Connect</app-button>
+      </div>
+
+      <div class="hero__social">
+        <span class="hero__social-label">Find me on</span>
+        <app-social-links [links]="socials" />
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="visual">
+        <div class="visual__orbit"></div>
+        <div class="visual__orbit visual__orbit--2"></div>
+
+        <div class="visual__window">
+          <div class="visual__chrome">
+            <span></span><span></span><span></span>
+            <p>angular-app.ts</p>
+          </div>
+          <pre class="visual__code"><code><span class="c-kw">import</span> &#123; <span class="c-fn">Component</span>, <span class="c-fn">signal</span> &#125; <span class="c-kw">from</span> <span class="c-str">'@angular/core'</span>;
+
+<span class="c-dec">@Component</span>(&#123;
+  <span class="c-prop">selector</span>: <span class="c-str">'app-dashboard'</span>,
+  <span class="c-prop">standalone</span>: <span class="c-bool">true</span>,
+&#125;)
+<span class="c-kw">export class</span> <span class="c-class">Dashboard</span> &#123;
+  <span class="c-prop">metrics</span> = <span class="c-fn">signal</span>([]);
+  <span class="c-prop">ready</span> = <span class="c-fn">signal</span>(<span class="c-bool">true</span>);
+&#125;</code></pre>
+        </div>
+
+        <div class="visual__card visual__card--arch">
+          <p class="visual__card-label">Architecture</p>
+          <ul>
+            <li><span>Standalone</span></li>
+            <li><span>Signals</span></li>
+            <li><span>RxJS</span></li>
+          </ul>
+        </div>
+
+        <div class="visual__card visual__card--badge">
+          <div class="visual__ng">
+            <span>A</span>
+          </div>
+          <div>
+            <p class="visual__card-title">Angular</p>
+            <p class="visual__card-sub">Primary stack</p>
+          </div>
+        </div>
+
+        <div class="visual__card visual__card--term">
+          <p><span class="c-prompt">$</span> ng build --configuration=production</p>
+          <p class="c-ok">✔ Compiled successfully.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

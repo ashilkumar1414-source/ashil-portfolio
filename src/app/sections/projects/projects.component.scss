@@ -1,0 +1,178 @@
+@use '../../../styles/mixins' as *;
+
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-bottom: var(--space-8);
+}
+
+.filter-chip {
+  @include button-reset;
+  @include focus-ring;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-default);
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition:
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+
+  &:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+  }
+
+  &.is-active {
+    background: var(--color-accent-muted);
+    border-color: rgba(225, 29, 72, 0.4);
+    color: var(--color-accent-hover);
+  }
+}
+
+.projects__grid {
+  display: grid;
+  gap: var(--space-6);
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-card {
+  @include card;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.project-card__visual {
+  position: relative;
+  height: 11.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+
+  &[data-visual='farming'] {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(225, 29, 72, 0.15));
+  }
+
+  &[data-visual='marketing'] {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(225, 29, 72, 0.18));
+  }
+
+  &[data-visual='analytics'] {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.12));
+  }
+
+  &[data-visual='campaign'] {
+    background: linear-gradient(135deg, rgba(251, 146, 60, 0.18), rgba(225, 29, 72, 0.16));
+  }
+}
+
+.project-card__visual-inner {
+  position: relative;
+  height: 100%;
+  padding: var(--space-5);
+}
+
+.project-card__visual-label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  opacity: 0.85;
+}
+
+.project-card__shape {
+  position: absolute;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  right: -1.5rem;
+  bottom: -2.5rem;
+  transform: rotate(18deg);
+}
+
+.project-card__shape--2 {
+  width: 6rem;
+  height: 6rem;
+  right: 5rem;
+  bottom: 1rem;
+  transform: rotate(-12deg);
+  background: var(--color-accent-muted);
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  flex: 1;
+
+  h3 {
+    margin: 0;
+  }
+
+  > p {
+    margin: 0;
+    font-size: var(--fs-sm);
+  }
+}
+
+.project-card__label {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.project-card__contribution {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  li {
+    font-size: 0.72rem;
+    padding: 0.28rem 0.55rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+}
+
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding-top: var(--space-2);
+}

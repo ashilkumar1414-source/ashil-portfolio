@@ -1,0 +1,60 @@
+@use '../../../styles/mixins' as *;
+
+.process__track {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+.process__step {
+  position: relative;
+  @include card;
+  padding: var(--space-5);
+  min-height: 10.5rem;
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--fs-base);
+  }
+
+  p {
+    margin: 0;
+    font-size: var(--fs-sm);
+  }
+}
+
+.process__number {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.process__connector {
+  display: none;
+
+  @include respond-to(xl) {
+    display: block;
+    position: absolute;
+    top: 1.85rem;
+    right: -0.55rem;
+    width: 0.7rem;
+    height: 2px;
+    background: var(--gradient-line);
+    z-index: 1;
+  }
+}

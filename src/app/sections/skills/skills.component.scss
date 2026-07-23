@@ -1,0 +1,88 @@
+@use '../../../styles/mixins' as *;
+
+.skills__grid {
+  display: grid;
+  gap: var(--space-5);
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-card {
+  @include card;
+  @include card-hover;
+  padding: var(--space-5) var(--space-5) var(--space-6);
+
+  h3 {
+    margin: 0 0 var(--space-4);
+    font-size: var(--fs-md);
+    color: var(--text-primary);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-input);
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    transition:
+      border-color var(--duration-base) var(--ease-out),
+      color var(--duration-base) var(--ease-out),
+      background var(--duration-base) var(--ease-out);
+
+    &:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+    }
+
+    &.is-primary {
+      border-color: rgba(225, 29, 72, 0.45);
+      background: var(--color-accent-muted);
+      color: var(--color-accent-hover);
+      font-weight: 600;
+      box-shadow: 0 0 0 1px rgba(225, 29, 72, 0.12);
+    }
+  }
+}
+
+.skill-card__badge {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+@include respond-to(xl) {
+  .skill-card:nth-child(4),
+  .skill-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(6, 1fr);
+
+    .skill-card:nth-child(1),
+    .skill-card:nth-child(2),
+    .skill-card:nth-child(3) {
+      grid-column: span 2;
+    }
+
+    .skill-card:nth-child(4),
+    .skill-card:nth-child(5) {
+      grid-column: span 3;
+    }
+  }
+}

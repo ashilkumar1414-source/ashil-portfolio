@@ -1,0 +1,30 @@
+<section id="experience" class="section experience">
+  <div class="container">
+    <app-section-header
+      appReveal
+      eyebrow="Experience"
+      title="Professional journey"
+      subtitle="Shipping production frontend experiences across AI products, dashboards, and business platforms."
+    />
+
+    <ol class="timeline">
+      @for (item of experience; track item.company) {
+        <li class="timeline__item" appReveal>
+          <div class="timeline__marker" aria-hidden="true"></div>
+          <article class="timeline__card">
+            <div class="timeline__meta">
+              <p class="timeline__company">{{ item.company }}</p>
+              <p class="timeline__period">{{ item.period }}</p>
+            </div>
+            <h3>{{ item.role }}</h3>
+            <ul>
+              @for (point of item.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

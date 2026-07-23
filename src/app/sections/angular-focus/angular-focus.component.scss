@@ -1,0 +1,125 @@
+@use '../../../styles/mixins' as *;
+
+.angular-focus__layout {
+  display: grid;
+  gap: var(--space-8);
+
+  @include respond-to(lg) {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+}
+
+.angular-focus__points {
+  display: grid;
+  gap: var(--space-4);
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.point-card {
+  @include card;
+  @include card-hover;
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5);
+
+  h3 {
+    margin: 0 0 0.4rem;
+    font-size: var(--fs-base);
+  }
+
+  p {
+    margin: 0;
+    font-size: var(--fs-sm);
+  }
+}
+
+.point-card__index {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.arch {
+  @include card;
+  @include glass;
+  padding: var(--space-6);
+  position: sticky;
+  top: calc(var(--nav-height) + 1.5rem);
+}
+
+.arch__eyebrow {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.arch__flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.arch__node {
+  width: 100%;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  background: var(--bg-input);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  animation: fade-up 0.6s var(--ease-out) both;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i * 2 - 1}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
+
+  &:first-child {
+    border-color: rgba(225, 29, 72, 0.45);
+    background: var(--color-accent-muted);
+    color: var(--color-accent-hover);
+    box-shadow: 0 0 24px var(--color-accent-glow);
+  }
+}
+
+.arch__arrow {
+  display: flex;
+  justify-content: center;
+  padding-block: 0.35rem;
+
+  span {
+    display: block;
+    width: 2px;
+    height: 1.35rem;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--color-accent), var(--color-secondary));
+    transform-origin: top;
+    animation: draw-line 0.7s var(--ease-out) both;
+  }
+}
+
+.arch__note {
+  margin: var(--space-5) 0 0;
+  font-size: var(--fs-sm);
+  text-align: center;
+  color: var(--text-muted);
+}

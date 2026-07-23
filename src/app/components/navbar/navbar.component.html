@@ -1,0 +1,63 @@
+<header class="navbar" [class.navbar--scrolled]="scroll.scrolled()" [class.navbar--open]="menuOpen()">
+  <div class="navbar__inner container">
+    <a class="navbar__logo" href="#home" (click)="navigate('home', $event)">
+      <span class="navbar__logo-mark" aria-hidden="true"></span>
+      {{ name }}
+    </a>
+
+    <nav class="navbar__nav hide-mobile" aria-label="Primary">
+      @for (link of links; track link.id) {
+        <a
+          class="navbar__link"
+          [class.is-active]="scroll.activeSection() === link.id"
+          [href]="link.href"
+          (click)="navigate(link.id, $event)"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="navbar__actions">
+      <app-theme-toggle />
+      <app-button class="hide-mobile" variant="primary" size="sm" [href]="resumePath" [download]="resumeFileName">
+        Resume
+      </app-button>
+      <button
+        type="button"
+        class="navbar__burger hide-desktop"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="mobile-menu"
+        aria-label="Toggle navigation menu"
+        (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="navbar__mobile hide-desktop"
+    [class.is-open]="menuOpen()"
+    [attr.aria-hidden]="!menuOpen()"
+  >
+    <nav class="navbar__mobile-nav" aria-label="Mobile">
+      @for (link of links; track link.id) {
+        <a
+          class="navbar__mobile-link"
+          [class.is-active]="scroll.activeSection() === link.id"
+          [href]="link.href"
+          (click)="navigate(link.id, $event)"
+        >
+          {{ link.label }}
+        </a>
+      }
+      <app-button variant="primary" size="md" [href]="resumePath" [download]="resumeFileName" [fullWidth]="true">
+        Download Resume
+      </app-button>
+    </nav>
+  </div>
+</header>

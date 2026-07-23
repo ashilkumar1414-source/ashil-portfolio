@@ -1,0 +1,43 @@
+<section id="angular" class="section angular-focus">
+  <div class="container">
+    <app-section-header
+      appReveal
+      eyebrow="Specialization"
+      title="Why Angular?"
+      subtitle="My approach to building maintainable, reactive, and scalable Angular applications."
+    />
+
+    <div class="angular-focus__layout">
+      <div class="angular-focus__points">
+        @for (point of points; track point.title; let i = $index) {
+          <article class="point-card" appReveal>
+            <span class="point-card__index">{{ i + 1 | number: '2.0-0' }}</span>
+            <div>
+              <h3>{{ point.title }}</h3>
+              <p>{{ point.description }}</p>
+            </div>
+          </article>
+        }
+      </div>
+
+      <aside class="arch" appReveal aria-label="Angular architecture flow">
+        <p class="arch__eyebrow">Architecture flow</p>
+        <ol class="arch__flow">
+          @for (step of flow; track step; let last = $last) {
+            <li class="arch__node">
+              <span>{{ step }}</span>
+            </li>
+            @if (!last) {
+              <li class="arch__arrow" aria-hidden="true">
+                <span></span>
+              </li>
+            }
+          }
+        </ol>
+        <p class="arch__note">
+          From reusable components to reactive state and polished UI — a clean Angular pipeline for product delivery.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <p class="footer__name">{{ name }}</p>
+      <p class="footer__role">{{ role }}</p>
+    </div>
+
+    <app-social-links [links]="socials" />
+
+    <div class="footer__meta">
+      <p class="footer__copy">&copy; {{ year }} {{ name }}. All rights reserved.</p>
+      <button type="button" class="footer__top" (click)="backToTop()" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+        Top
+      </button>
+    </div>
+  </div>
+</footer>

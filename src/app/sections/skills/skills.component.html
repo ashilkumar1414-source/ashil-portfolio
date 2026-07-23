@@ -1,0 +1,29 @@
+<section id="skills" class="section section-alt skills">
+  <div class="container">
+    <app-section-header
+      appReveal
+      align="center"
+      eyebrow="Skills"
+      title="Technologies I work with"
+      subtitle="A modern Angular-first stack for building scalable, high-quality product experiences."
+    />
+
+    <div class="skills__grid">
+      @for (category of categories; track category.title; let i = $index) {
+        <article class="skill-card" appReveal [delay]="delayFor(i)">
+          <h3>{{ category.title }}</h3>
+          <ul>
+            @for (skill of category.skills; track skill.name) {
+              <li [class.is-primary]="skill.highlighted">
+                @if (skill.highlighted) {
+                  <span class="skill-card__badge" aria-hidden="true">★</span>
+                }
+                {{ skill.name }}
+              </li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>
